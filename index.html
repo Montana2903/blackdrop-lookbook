@@ -6,8 +6,32 @@
   <title>BLACKDROP • Digital Lookbook</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    :root{color-scheme:dark;--bg:#000;--surface:#0a0a0a;--card:#121212;--border:#262626;--text:#fff;--muted:#999}
-    body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif}
+    :root{color-scheme:dark;--bg:#000;--surface:#0a0a0a;--card:#121212;--border:#262626;--text:#fff;--muted:#999;--ease-luxury:cubic-bezier(.22,1,.36,1)}
+    *{scroll-behavior:smooth}
+    body{background:radial-gradient(ellipse at 50% -20%,#242424 0,transparent 42%),var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif}
+    header{background:rgba(8,8,8,.62)!important;border-color:rgba(255,255,255,.1)!important;backdrop-filter:blur(24px) saturate(160%);-webkit-backdrop-filter:blur(24px) saturate(160%)}
+    header>div{min-height:76px}
+    header a:last-child,.hero-cta,.contact-cta{transition:transform .45s var(--ease-luxury),box-shadow .45s var(--ease-luxury),background .45s ease}
+    header a:last-child:hover,.hero-cta:hover,.contact-cta:hover{transform:translateY(-2px);box-shadow:0 10px 35px rgba(255,255,255,.18)}
+    main>section:first-child{animation:rise-in 1s var(--ease-luxury) both}
+    main>section:first-child h1{letter-spacing:-.045em}
+    .filter{position:relative;overflow:hidden;transition:color .35s ease,border-color .35s ease,background .35s ease,transform .35s var(--ease-luxury),box-shadow .35s ease}
+    .filter:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.55)}
+    .filter[aria-pressed="true"]{box-shadow:0 4px 24px rgba(255,255,255,.14)}
+    .glass-card{position:relative;border-color:rgba(255,255,255,.1)!important;background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.018) 42%,rgba(255,255,255,.035))!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.09),0 18px 50px rgba(0,0,0,.32);backdrop-filter:blur(18px) saturate(130%);-webkit-backdrop-filter:blur(18px) saturate(130%);transition:transform .65s var(--ease-luxury),border-color .45s ease,box-shadow .65s var(--ease-luxury);animation:rise-in .75s var(--ease-luxury) both}
+    .glass-card:hover{transform:translateY(-8px) scale(1.012);border-color:rgba(255,255,255,.28)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 28px 70px rgba(0,0,0,.55),0 0 35px rgba(255,255,255,.055)}
+    .glass-card img{transition:transform .9s var(--ease-luxury),filter .7s ease}
+    .glass-card:hover img{transform:scale(1.045);filter:brightness(1.08)}
+    .glass-card button:focus-visible,.filter:focus-visible,header a:focus-visible,#close-modal:focus-visible{outline:2px solid #fff;outline-offset:4px}
+    .glass-card span.absolute{border-color:rgba(255,255,255,.22)!important;background:rgba(12,12,12,.62)!important;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+    #product-modal{background:rgba(0,0,0,.68)!important;backdrop-filter:blur(18px) saturate(120%);-webkit-backdrop-filter:blur(18px) saturate(120%)}
+    #product-modal article{border-color:rgba(255,255,255,.16)!important;background:linear-gradient(145deg,rgba(35,35,35,.88),rgba(8,8,8,.9) 60%)!important;box-shadow:0 35px 100px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.14);backdrop-filter:blur(30px) saturate(150%);-webkit-backdrop-filter:blur(30px) saturate(150%);animation:modal-in .55s var(--ease-luxury) both}
+    #close-modal{transition:transform .35s var(--ease-luxury),background .3s ease,border-color .3s ease}
+    #close-modal:hover{transform:rotate(90deg);background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.5)}
+    #modal-image{background:rgba(0,0,0,.38);box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
+    @keyframes rise-in{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes modal-in{from{opacity:0;transform:translateY(18px) scale(.97);filter:blur(8px)}to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
   </style>
 </head>
 <body class="min-h-screen">
@@ -22,15 +46,15 @@
       <p class="mb-4 text-xs font-bold uppercase tracking-[.3em] text-neutral-400">Catálogo digital exclusivo</p>
       <h1 class="max-w-3xl text-4xl font-black uppercase leading-tight md:text-6xl">Piezas de colección <span class="text-neutral-500">Báez</span></h1>
       <p class="mt-5 max-w-xl text-sm leading-7 text-neutral-400">Consulta piezas, tallas y disponibilidad directamente por Instagram.</p>
-      <a href="#catalogo" class="mt-8 inline-block rounded-xl bg-white px-6 py-3 text-xs font-extrabold uppercase tracking-wider text-black">Explorar catálogo</a>
+      <a href="#catalogo" class="hero-cta mt-8 inline-block rounded-xl bg-white px-6 py-3 text-xs font-extrabold uppercase tracking-wider text-black">Explorar catálogo</a>
     </section>
     <section id="catalogo" class="border-t border-neutral-800 py-10">
       <div class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div><p class="text-xs font-bold uppercase tracking-[.25em] text-neutral-500">Marca</p><h2 class="mt-2 text-2xl font-black uppercase">Báez</h2></div>
         <div class="flex flex-wrap gap-2" aria-label="Filtrar catálogo">
-          <button class="filter rounded-full bg-white px-4 py-2 text-xs font-bold uppercase text-black" data-filter="all">Todos</button>
-          <button class="filter rounded-full border border-neutral-700 px-4 py-2 text-xs font-bold uppercase" data-filter="Gorras">Gorras</button>
-          <button class="filter rounded-full border border-neutral-700 px-4 py-2 text-xs font-bold uppercase" data-filter="Exclusivo">Ediciones limitadas</button>
+          <button class="filter rounded-full bg-white px-4 py-2 text-xs font-bold uppercase text-black" data-filter="all" aria-pressed="true">Todos</button>
+          <button class="filter rounded-full border border-neutral-700 px-4 py-2 text-xs font-bold uppercase" data-filter="Gorras" aria-pressed="false">Gorras</button>
+          <button class="filter rounded-full border border-neutral-700 px-4 py-2 text-xs font-bold uppercase" data-filter="Exclusivo" aria-pressed="false">Ediciones limitadas</button>
         </div>
       </div>
       <div id="product-grid" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
@@ -49,7 +73,7 @@
         <p id="modal-materials" class="mt-2 text-sm text-neutral-300"></p>
         <p class="mt-5 text-xs font-bold uppercase tracking-wider text-neutral-500">Talla / Ajuste</p>
         <p id="modal-sizes" class="mt-2 text-sm text-neutral-300"></p>
-        <a href="https://www.instagram.com/drop_noir_" target="_blank" rel="noopener noreferrer" class="mt-8 inline-block rounded-xl bg-white px-5 py-3 text-xs font-extrabold uppercase text-black">Consultar por Instagram</a>
+        <a href="https://www.instagram.com/drop_noir_" target="_blank" rel="noopener noreferrer" class="contact-cta mt-8 inline-block rounded-xl bg-white px-5 py-3 text-xs font-extrabold uppercase text-black">Consultar por Instagram</a>
       </div>
     </article>
   </div>
@@ -80,8 +104,8 @@
       const products = PRODUCTS.filter(product => activeFilter === 'all' ||
         (activeFilter === 'Exclusivo' ? product.isExclusive : product.category === activeFilter));
       document.getElementById('empty-state').classList.toggle('hidden', products.length > 0);
-      grid.innerHTML = products.map(product => `
-        <article class="overflow-hidden rounded-3xl border border-neutral-800 bg-neutral-950">
+      grid.innerHTML = products.map((product, index) => `
+        <article class="glass-card overflow-hidden rounded-3xl border border-neutral-800 bg-neutral-950" style="animation-delay:${index * 90}ms">
           <button class="product-open block w-full text-left" data-product-id="${product.id}" aria-label="Ver ${product.name}">
             <div class="relative flex h-80 items-center justify-center bg-black p-3">
               <img src="${product.image}" alt="${product.name}" loading="lazy" class="h-full w-full object-contain">
@@ -109,8 +133,12 @@
 
     document.querySelectorAll('.filter').forEach(button => button.addEventListener('click', () => {
       activeFilter = button.dataset.filter;
-      document.querySelectorAll('.filter').forEach(item => item.className = 'filter rounded-full border border-neutral-700 px-4 py-2 text-xs font-bold uppercase');
+      document.querySelectorAll('.filter').forEach(item => {
+        item.className = 'filter rounded-full border border-neutral-700 px-4 py-2 text-xs font-bold uppercase';
+        item.setAttribute('aria-pressed', 'false');
+      });
       button.className = 'filter rounded-full bg-white px-4 py-2 text-xs font-bold uppercase text-black';
+      button.setAttribute('aria-pressed', 'true');
       renderProducts();
     }));
 
