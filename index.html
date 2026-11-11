@@ -3,150 +3,76 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BLACKDROP • Digital Lookbook</title>
+  <title>BLACKDROP • Digital Lookbook & Showcase</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
-    :root{color-scheme:dark;--bg:#000;--surface:#0a0a0a;--card:#121212;--border:#262626;--text:#fff;--muted:#999;--ease-luxury:cubic-bezier(.22,1,.36,1)}
-    *{scroll-behavior:smooth}
-    body{background:radial-gradient(ellipse at 50% -20%,#242424 0,transparent 42%),var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif}
-    header{background:rgba(8,8,8,.62)!important;border-color:rgba(255,255,255,.1)!important;backdrop-filter:blur(24px) saturate(160%);-webkit-backdrop-filter:blur(24px) saturate(160%)}
-    header>div{min-height:76px}
-    header a:last-child,.hero-cta,.contact-cta{transition:transform .45s var(--ease-luxury),box-shadow .45s var(--ease-luxury),background .45s ease}
-    header a:last-child:hover,.hero-cta:hover,.contact-cta:hover{transform:translateY(-2px);box-shadow:0 10px 35px rgba(255,255,255,.18)}
-    main>section:first-child{animation:rise-in 1s var(--ease-luxury) both}
-    main>section:first-child h1{letter-spacing:-.045em}
-    .filter{position:relative;overflow:hidden;transition:color .35s ease,border-color .35s ease,background .35s ease,transform .35s var(--ease-luxury),box-shadow .35s ease}
-    .filter:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.55)}
-    .filter[aria-pressed="true"]{box-shadow:0 4px 24px rgba(255,255,255,.14)}
-    .glass-card{position:relative;border-color:rgba(255,255,255,.1)!important;background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.018) 42%,rgba(255,255,255,.035))!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.09),0 18px 50px rgba(0,0,0,.32);backdrop-filter:blur(18px) saturate(130%);-webkit-backdrop-filter:blur(18px) saturate(130%);transition:transform .65s var(--ease-luxury),border-color .45s ease,box-shadow .65s var(--ease-luxury);animation:rise-in .75s var(--ease-luxury) both}
-    .glass-card:hover{transform:translateY(-8px) scale(1.012);border-color:rgba(255,255,255,.28)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 28px 70px rgba(0,0,0,.55),0 0 35px rgba(255,255,255,.055)}
-    .glass-card img{transition:transform .9s var(--ease-luxury),filter .7s ease}
-    .glass-card:hover img{transform:scale(1.045);filter:brightness(1.08)}
-    .glass-card button:focus-visible,.filter:focus-visible,header a:focus-visible,#close-modal:focus-visible{outline:2px solid #fff;outline-offset:4px}
-    .glass-card span.absolute{border-color:rgba(255,255,255,.22)!important;background:rgba(12,12,12,.62)!important;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
-    #product-modal{background:rgba(0,0,0,.68)!important;backdrop-filter:blur(18px) saturate(120%);-webkit-backdrop-filter:blur(18px) saturate(120%)}
-    #product-modal article{border-color:rgba(255,255,255,.16)!important;background:linear-gradient(145deg,rgba(35,35,35,.88),rgba(8,8,8,.9) 60%)!important;box-shadow:0 35px 100px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.14);backdrop-filter:blur(30px) saturate(150%);-webkit-backdrop-filter:blur(30px) saturate(150%);animation:modal-in .55s var(--ease-luxury) both}
-    #close-modal{transition:transform .35s var(--ease-luxury),background .3s ease,border-color .3s ease}
-    #close-modal:hover{transform:rotate(90deg);background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.5)}
-    #modal-image{background:rgba(0,0,0,.38);box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
-    @keyframes rise-in{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
-    @keyframes modal-in{from{opacity:0;transform:translateY(18px) scale(.97);filter:blur(8px)}to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}
-    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+    :root{color-scheme:dark;--bg:#000;--surface:#0a0a0a;--card:#121212;--border:#262626;--text:#fff;--muted:#999;--ease:cubic-bezier(.16,1,.3,1)}
+    *{scroll-behavior:smooth} body{background:radial-gradient(ellipse at 50% -20%,#242424 0,transparent 42%),var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;overflow-x:hidden}
+    .glass-nav{background:rgba(8,8,8,.72);backdrop-filter:blur(24px) saturate(160%);border-bottom:1px solid rgba(255,255,255,.1)}
+    .transition-luxury{transition:all .4s var(--ease)} .glass-card{background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.018) 55%,rgba(255,255,255,.035));border-color:rgba(255,255,255,.12);animation:rise-in .65s var(--ease) both}
+    .glass-card:hover{transform:translateY(-8px) scale(1.012);border-color:rgba(255,255,255,.3);box-shadow:0 28px 70px #000b,0 0 35px #fff1}
+    .glass-card img{transition:transform .9s var(--ease),filter .7s}.glass-card:hover img{transform:scale(1.045);filter:brightness(1.08)}
+    .filter{transition:all .35s var(--ease)}.filter:hover{transform:translateY(-2px)}
+    #product-modal{backdrop-filter:blur(18px)}#product-modal article{animation:modal-in .4s var(--ease) both}
+    @keyframes rise-in{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}@keyframes modal-in{from{opacity:0;transform:translateY(18px) scale(.97);filter:blur(8px)}to{opacity:1;transform:none;filter:blur(0)}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
   </style>
 </head>
-<body class="min-h-screen">
-  <header class="sticky top-0 z-10 border-b border-neutral-800 bg-black/90 backdrop-blur">
-    <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-5">
-      <a href="#" class="font-black tracking-[.25em]">BLACKDROP</a>
-      <a href="https://www.instagram.com/drop_noir_" target="_blank" rel="noopener noreferrer" class="rounded-full bg-white px-4 py-2 text-xs font-bold uppercase text-black">Instagram @drop_noir_</a>
-    </div>
-  </header>
-  <main class="mx-auto max-w-6xl px-5">
-    <section class="py-16 md:py-24">
-      <p class="mb-4 text-xs font-bold uppercase tracking-[.3em] text-neutral-400">Catálogo digital exclusivo</p>
-      <h1 class="max-w-3xl text-4xl font-black uppercase leading-tight md:text-6xl">Piezas de colección <span class="text-neutral-500">Báez</span></h1>
-      <p class="mt-5 max-w-xl text-sm leading-7 text-neutral-400">Consulta piezas, tallas y disponibilidad directamente por Instagram.</p>
-      <a href="#catalogo" class="hero-cta mt-8 inline-block rounded-xl bg-white px-6 py-3 text-xs font-extrabold uppercase tracking-wider text-black">Explorar catálogo</a>
+<body class="min-h-screen selection:bg-neutral-500 selection:text-white">
+  <div class="bg-neutral-950 border-b border-neutral-800 py-2 text-center text-[10px] tracking-widest uppercase text-neutral-400">● Catálogo digital exclusivo • Consultas directas vía Instagram</div>
+  <header class="sticky top-0 z-40 glass-nav"><div class="max-w-7xl mx-auto px-5 h-20 flex items-center justify-between">
+    <a href="#" class="font-black tracking-[.25em]">BLACKDROP</a>
+    <nav class="hidden md:flex gap-7 text-xs font-semibold uppercase tracking-wider text-neutral-400"><a href="#catalogo" class="hover:text-white">Colección</a><button onclick="filterCategory('Gorras')" class="hover:text-white">Gorras</button><button onclick="filterCategory('Ropa')" class="hover:text-white">Ropa</button><button onclick="filterCategory('Exclusivo')" class="hover:text-amber-400">♛ Ediciones limitadas</button></nav>
+    <div class="flex gap-2"><button onclick="toggleTheme()" class="rounded-full border border-neutral-700 px-3 py-2 text-xs" title="Cambiar tema">◐</button><button onclick="toggleWishlistModal()" class="rounded-full border border-neutral-700 px-3 py-2 text-xs">♡ <span id="wishlist-count">0</span></button><a href="https://www.instagram.com/drop_noir_" target="_blank" rel="noopener noreferrer" class="rounded-full bg-white px-4 py-2 text-xs font-bold uppercase text-black">Instagram</a></div>
+  </div></header>
+  <main class="max-w-7xl mx-auto px-5">
+    <section class="relative my-6 min-h-[480px] overflow-hidden rounded-3xl border border-neutral-800 flex items-center">
+      <div id="hero-bg" class="absolute inset-0 bg-cover bg-center opacity-40 transition-all duration-1000" style="background-image:url('https://images.unsplash.com/photo-1588850561407-ed78c282e89b?q=80&w=1600&auto=format&fit=crop')"></div><div class="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent"></div>
+      <div class="relative z-10 max-w-2xl p-8 md:p-16"><span id="hero-tag" class="text-xs uppercase tracking-[.25em] text-neutral-400">BLACKDROP SHOWCASE 2026</span><h1 id="hero-title" class="mt-5 text-4xl md:text-6xl font-black uppercase leading-tight">Exhibición de <span class="text-neutral-400">alta gama</span></h1><p id="hero-desc" class="mt-5 max-w-lg text-sm leading-7 text-neutral-300">Catálogo interactivo con prendas y gorras de edición limitada. Consulta piezas, tallas y disponibilidad vía Instagram.</p><a href="#catalogo" class="mt-8 inline-flex rounded-xl bg-white px-6 py-3 text-xs font-extrabold uppercase tracking-wider text-black hover:-translate-y-1 transition-luxury">Explorar catálogo →</a></div>
+      <div class="absolute bottom-6 right-6 flex gap-2"><button onclick="changeSlide(0)" class="hero-dot h-1.5 w-8 rounded-full bg-white"></button><button onclick="changeSlide(1)" class="hero-dot h-1.5 w-2 rounded-full bg-neutral-500"></button><button onclick="changeSlide(2)" class="hero-dot h-1.5 w-2 rounded-full bg-neutral-500"></button></div>
     </section>
-    <section id="catalogo" class="border-t border-neutral-800 py-10">
-      <div class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div><p class="text-xs font-bold uppercase tracking-[.25em] text-neutral-500">Marca</p><h2 class="mt-2 text-2xl font-black uppercase">Báez</h2></div>
-        <div class="flex flex-wrap gap-2" aria-label="Filtrar catálogo">
-          <button class="filter rounded-full bg-white px-4 py-2 text-xs font-bold uppercase text-black" data-filter="all" aria-pressed="true">Todos</button>
-          <button class="filter rounded-full border border-neutral-700 px-4 py-2 text-xs font-bold uppercase" data-filter="Gorras" aria-pressed="false">Gorras</button>
-          <button class="filter rounded-full border border-neutral-700 px-4 py-2 text-xs font-bold uppercase" data-filter="Exclusivo" aria-pressed="false">Ediciones limitadas</button>
-        </div>
-      </div>
-      <div id="product-grid" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
-      <p id="empty-state" class="hidden py-12 text-center text-sm text-neutral-400">No hay productos en esta categoría.</p>
+    <section id="marcas" class="border-y border-neutral-800 py-7"><div class="mb-4 flex justify-between text-xs uppercase tracking-[.25em] text-neutral-500"><span>Marcas en exhibición</span><span>Catálogo oficial</span></div><div id="brand-pills" class="flex gap-3 overflow-x-auto pb-2"></div></section>
+    <section id="catalogo" class="py-12"><div class="mb-8 flex flex-col gap-5 md:flex-row md:items-center md:justify-between"><div class="flex gap-2 overflow-x-auto"><button class="filter rounded-full bg-white px-4 py-2 text-xs font-bold uppercase text-black" data-cat="all" onclick="filterCategory('all')">Todos</button><button class="filter rounded-full border border-neutral-700 px-4 py-2 text-xs uppercase" data-cat="Gorras" onclick="filterCategory('Gorras')">Gorras</button><button class="filter rounded-full border border-neutral-700 px-4 py-2 text-xs uppercase" data-cat="Ropa" onclick="filterCategory('Ropa')">Ropa</button><button class="filter rounded-full border border-neutral-700 px-4 py-2 text-xs uppercase" data-cat="Exclusivo" onclick="filterCategory('Exclusivo')">♛ Ediciones especiales</button></div><input id="search" oninput="renderProducts()" placeholder="Buscar por pieza o marca..." class="rounded-xl border border-neutral-700 bg-neutral-950 px-4 py-3 text-xs outline-none focus:border-white md:w-72"></div>
+      <div id="product-grid" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"></div><p id="empty-state" class="hidden py-16 text-center text-sm text-neutral-400">No hay productos en esta categoría.</p>
     </section>
   </main>
-  <div id="product-modal" class="fixed inset-0 z-20 hidden items-center justify-center overflow-y-auto bg-black/90 p-4" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-    <article class="relative my-auto grid w-full max-w-4xl gap-6 rounded-3xl border border-neutral-800 bg-neutral-950 p-5 md:grid-cols-2 md:p-8">
-      <button id="close-modal" class="absolute right-4 top-4 rounded-full border border-neutral-700 px-3 py-1 text-sm" aria-label="Cerrar">✕</button>
-      <img id="modal-image" class="h-72 w-full rounded-2xl bg-black object-contain md:h-[28rem]" alt="">
-      <div class="self-center py-8">
-        <p id="modal-brand" class="text-xs font-bold uppercase tracking-[.25em] text-neutral-500"></p>
-        <h2 id="modal-title" class="mt-3 text-2xl font-black uppercase"></h2>
-        <p id="modal-description" class="mt-5 text-sm leading-7 text-neutral-300"></p>
-        <p class="mt-5 text-xs font-bold uppercase tracking-wider text-neutral-500">Materiales</p>
-        <p id="modal-materials" class="mt-2 text-sm text-neutral-300"></p>
-        <p class="mt-5 text-xs font-bold uppercase tracking-wider text-neutral-500">Talla / Ajuste</p>
-        <p id="modal-sizes" class="mt-2 text-sm text-neutral-300"></p>
-        <a href="https://www.instagram.com/drop_noir_" target="_blank" rel="noopener noreferrer" class="contact-cta mt-8 inline-block rounded-xl bg-white px-5 py-3 text-xs font-extrabold uppercase text-black">Consultar por Instagram</a>
-      </div>
-    </article>
-  </div>
+  <div id="product-modal" class="fixed inset-0 z-50 hidden items-center justify-center overflow-y-auto bg-black/80 p-4" role="dialog" aria-modal="true"><article class="relative grid w-full max-w-4xl gap-6 rounded-3xl border border-neutral-700 bg-neutral-950 p-6 md:grid-cols-2 md:p-8"><button onclick="closeProduct()" class="absolute right-4 top-4 rounded-full border border-neutral-700 px-3 py-1" aria-label="Cerrar">✕</button><img id="modal-image" class="h-72 w-full rounded-2xl bg-black object-contain md:h-96" alt=""><div class="self-center py-6"><p id="modal-brand" class="text-xs uppercase tracking-widest text-neutral-500"></p><h2 id="modal-title" class="mt-3 text-2xl font-black uppercase"></h2><p id="modal-desc" class="mt-5 text-sm leading-7 text-neutral-300"></p><p class="mt-5 text-xs uppercase text-neutral-500">Materiales</p><p id="modal-materials" class="mt-2 text-sm text-neutral-300"></p><p class="mt-5 text-xs uppercase text-neutral-500">Talla / Ajuste</p><p id="modal-sizes" class="mt-2 text-sm text-neutral-300"></p><a href="https://www.instagram.com/drop_noir_" target="_blank" rel="noopener noreferrer" class="mt-7 inline-block rounded-xl bg-white px-5 py-3 text-xs font-extrabold uppercase text-black">Consultar disponibilidad en Instagram</a></div></article></div>
+  <div id="wishlist-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 p-4"><div class="w-full max-w-lg rounded-3xl border border-neutral-700 bg-neutral-950 p-6"><div class="mb-5 flex justify-between"><h2 class="font-bold uppercase">Piezas guardadas</h2><button onclick="toggleWishlistModal()">✕</button></div><div id="wishlist-items" class="space-y-3"></div></div></div>
   <footer class="mt-12 border-t border-neutral-800 px-5 py-8 text-center text-[10px] uppercase tracking-widest text-neutral-500">© 2026 BLACKDROP • Catálogo de exhibición</footer>
-  <script>
-    // Para agregar productos manualmente, duplica un objeto dentro de PRODUCTS.
-    // Usa un id único; categorías disponibles: 'Gorras' y 'Ropa'.
-    const PRODUCTS = [
-      {
-        id: 13,
-        brand: 'Báez',
-        name: 'Gorra BAEZ x Adriano Zendejas (Shifu) – "AB\'z Total Black"',
-        category: 'Gorras',
-        badge: 'Edición limitada',
-        isExclusive: true,
-        image: 'https://http2.mlstatic.com/D_NQ_NP_808491-MLM110708298399_042026-O.webp',
-        description: 'Diseñada con una estética streetwear gótica en tono negro mate. Destaca por las letras bordadas "AB\'z" en el frente rellenas de cristales incrustados (rhinestones), contorneadas con vivo blanco y detalles de líneas bordadas en forma de flama a los costados y en la visera.',
-        materials: 'Algodón/Poliéster de alta densidad, apliques de pedrería/cristales brillosos en el logo y visera estructurada con remates textiles en contraste.',
-        sizes: 'Unitalla / Snapback (Ajustable con broche trasero)'
-      }
-    ];
-
-    const grid = document.getElementById('product-grid');
-    const modal = document.getElementById('product-modal');
-    let activeFilter = 'all';
-
-    function renderProducts() {
-      const products = PRODUCTS.filter(product => activeFilter === 'all' ||
-        (activeFilter === 'Exclusivo' ? product.isExclusive : product.category === activeFilter));
-      document.getElementById('empty-state').classList.toggle('hidden', products.length > 0);
-      grid.innerHTML = products.map((product, index) => `
-        <article class="glass-card overflow-hidden rounded-3xl border border-neutral-800 bg-neutral-950" style="animation-delay:${index * 90}ms">
-          <button class="product-open block w-full text-left" data-product-id="${product.id}" aria-label="Ver ${product.name}">
-            <div class="relative flex h-80 items-center justify-center bg-black p-3">
-              <img src="${product.image}" alt="${product.name}" loading="lazy" class="h-full w-full object-contain">
-              <span class="absolute left-4 top-4 rounded-full border border-neutral-700 bg-black/80 px-3 py-1 text-[9px] font-bold uppercase tracking-widest">${product.badge}</span>
-            </div>
-            <div class="p-5"><p class="text-[10px] font-bold uppercase tracking-[.25em] text-neutral-500">${product.brand}</p><h3 class="mt-2 font-bold uppercase">${product.name}</h3><span class="mt-5 inline-block text-[10px] font-extrabold uppercase tracking-wider text-neutral-300">Ver detalles →</span></div>
-          </button>
-        </article>`).join('');
-      document.querySelectorAll('.product-open').forEach(button => button.addEventListener('click', () => openProduct(Number(button.dataset.productId))));
-    }
-
-    function openProduct(id) {
-      const product = PRODUCTS.find(item => item.id === id);
-      if (!product) return;
-      document.getElementById('modal-image').src = product.image;
-      document.getElementById('modal-image').alt = product.name;
-      document.getElementById('modal-brand').textContent = product.brand + ' • ' + product.badge;
-      document.getElementById('modal-title').textContent = product.name;
-      document.getElementById('modal-description').textContent = product.description;
-      document.getElementById('modal-materials').textContent = product.materials;
-      document.getElementById('modal-sizes').textContent = product.sizes;
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
-    }
-
-    document.querySelectorAll('.filter').forEach(button => button.addEventListener('click', () => {
-      activeFilter = button.dataset.filter;
-      document.querySelectorAll('.filter').forEach(item => {
-        item.className = 'filter rounded-full border border-neutral-700 px-4 py-2 text-xs font-bold uppercase';
-        item.setAttribute('aria-pressed', 'false');
-      });
-      button.className = 'filter rounded-full bg-white px-4 py-2 text-xs font-bold uppercase text-black';
-      button.setAttribute('aria-pressed', 'true');
-      renderProducts();
-    }));
-
-    function closeModal() { modal.classList.add('hidden'); modal.classList.remove('flex'); }
-    document.getElementById('close-modal').addEventListener('click', closeModal);
-    modal.addEventListener('click', event => { if (event.target === modal) closeModal(); });
-    document.addEventListener('keydown', event => { if (event.key === 'Escape') closeModal(); });
-    renderProducts();
-  </script>
+<script>
+const PRODUCTS=[
+{id:1,brand:'Barbas Hats',name:'Gorra Barbas Black Edition Trucker',category:'Gorras',badge:'Edición limitada',isExclusive:true,image:'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?q=80&w=800&auto=format&fit=crop',description:'Gorra exclusiva con parche bordado y malla respirable premium.',materials:'Algodón y malla técnica.',sizes:'Ajustable Snapback'},
+{id:2,brand:'31 Hats',name:'Gorra 31 Hats Gold Monogram',category:'Gorras',badge:'Destacado',isExclusive:false,image:'https://images.unsplash.com/photo-1575428652377-a2d80e2277fc?q=80&w=800&auto=format&fit=crop',description:'Visera curva con monograma metálico satinado.',materials:'Gamuza sintética y detalles metálicos.',sizes:'Ajustable Snapback'},
+{id:3,brand:'Fame Club',name:'Playera Oversized Fame Club Nocturne',category:'Ropa',badge:'Nuevo ingreso',isExclusive:false,image:'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=800&auto=format&fit=crop',description:'Playera de corte holgado con gráfico tipográfico minimalista.',materials:'Algodón peinado heavyweight.',sizes:'S, M, L, XL'},
+{id:4,brand:'Icon Hats',name:'Gorra Icon Hats Signature Crown',category:'Gorras',badge:'VIP Piece',isExclusive:true,image:'https://images.unsplash.com/photo-1534215754734-18e55d13e346?q=80&w=800&auto=format&fit=crop',description:'Bordado frontal 3D y estructura reforzada de seis paneles.',materials:'Lana acrílica y herrajes metálicos.',sizes:'Ajustable Strapback'},
+{id:5,brand:'Báez',name:'Hoodie Heavyweight Báez Essential',category:'Ropa',badge:'Premium Piece',isExclusive:false,image:'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=800&auto=format&fit=crop',description:'Sudadera de felpa pesada con textura interior suave.',materials:'Felpa francesa 100% algodón.',sizes:'M, L, XL'},
+{id:6,brand:'Florence',name:'Gorra Florence Clean White Curve',category:'Gorras',badge:'Edición limitada',isExclusive:true,image:'https://images.unsplash.com/photo-1521369984125-a4de54761661?q=80&w=800&auto=format&fit=crop',description:'Diseño minimalista de confección resistente.',materials:'Algodón twill premium.',sizes:'Ajustable Snapback'},
+{id:7,brand:'Rebel',name:'Chamarra Bomber Rebel Underground',category:'Ropa',badge:'Exclusivo VIP',isExclusive:true,image:'https://images.unsplash.com/photo-1551028719-00167b16eac5?q=80&w=800&auto=format&fit=crop',description:'Bomber con forro satinado, cierre reforzado y parches bordados.',materials:'Nylon técnico impermeable.',sizes:'S, M, L'},
+{id:8,brand:'Dreamer',name:'Gorra Dreamer Velvet Touch',category:'Gorras',badge:'Nuevo ingreso',isExclusive:false,image:'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?q=80&w=800&auto=format&fit=crop',description:'Textura aterciopelada con bordado frontal.',materials:'Terciopelo sintético.',sizes:'Ajustable Snapback'},
+{id:9,brand:'Cash Only',name:'Gorra Cash Only Money Talk Trucker',category:'Gorras',badge:'Popular',isExclusive:false,image:'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?q=80&w=800&auto=format&fit=crop',description:'Edición especial con parche característico.',materials:'Lona reforzada y malla flexible.',sizes:'Ajustable Snapback'},
+{id:10,brand:'Mr. Goldi',name:'Playera Graphic Mr. Goldi Royalty',category:'Ropa',badge:'Colección 2026',isExclusive:false,image:'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=800&auto=format&fit=crop',description:'Playera luxury con acabado suave e impresiones doradas.',materials:'Algodón mercerizado.',sizes:'S, M, L, XL'},
+{id:11,brand:'Barbas Hats',name:'Gorra Barbas All-Black Leather Visor',category:'Gorras',badge:'Exclusivo',isExclusive:true,image:'https://images.unsplash.com/photo-1575428652377-a2d80e2277fc?q=80&w=800&auto=format&fit=crop',description:'Visera de acento cuero sintético y parche emblemático.',materials:'Cuero vegano y algodón.',sizes:'Ajustable Strapback'},
+{id:12,brand:'Fame Club',name:'Hoodie Zip Fame Club Monogram',category:'Ropa',badge:'Limitado',isExclusive:true,image:'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=800&auto=format&fit=crop',description:'Hoodie de cierre completo con tirador metálico personalizado.',materials:'Mezcla premium algodón-poliéster.',sizes:'S, M, L'},
+{id:13,brand:'Báez',name:'Gorra BAEZ x Adriano Zendejas (Shifu) – "AB’z Total Black"',category:'Gorras',badge:'Edición limitada',isExclusive:true,image:'https://http2.mlstatic.com/D_NQ_NP_808491-MLM110708298399_042026-O.webp',description:'Diseñada con estética streetwear gótica en tono negro mate. Destaca por el logo AB’z con cristales incrustados y acabados de colección.',materials:'Algodón/poliéster de alta densidad, apliques de pedrería y visera estructurada.',sizes:'Unitalla / Snapback ajustable'}
+];
+const BRANDS=[...new Set(PRODUCTS.map(p=>p.brand))];let category='all',brand=null,slide=0,wishlist=JSON.parse(localStorage.getItem('blackdrop-wishlist')||'[]');
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function renderBrands(){document.getElementById('brand-pills').innerHTML=['Todas las marcas',...BRANDS].map((b,i)=>`<button onclick="filterBrand(${i?`'${esc(b)}'`:'null'})" class="whitespace-nowrap rounded-full border px-4 py-2 text-xs ${brand===(i?b:null)?'bg-white text-black':'border-neutral-700 text-neutral-400'}">${esc(b)}</button>`).join('')}
+function renderProducts(){let q=document.getElementById('search').value.toLowerCase();let list=PRODUCTS.filter(p=>(category==='all'||(category==='Exclusivo'?p.isExclusive:p.category===category))&&(!brand||p.brand===brand)&&(!q||(p.name+' '+p.brand).toLowerCase().includes(q)));document.getElementById('empty-state').classList.toggle('hidden',!!list.length);document.getElementById('product-grid').innerHTML=list.map((p,i)=>`<article class="glass-card overflow-hidden rounded-3xl border" style="animation-delay:${i*70}ms"><button class="block w-full text-left" onclick="openProduct(${p.id})"><div class="relative flex h-72 items-center justify-center overflow-hidden bg-black p-3"><img src="${esc(p.image)}" alt="${esc(p.name)}" loading="lazy" class="h-full w-full object-contain"><span class="absolute left-4 top-4 rounded-full border border-neutral-700 bg-black/80 px-3 py-1 text-[9px] uppercase">${esc(p.badge)}</span></div><div class="p-5"><p class="text-[10px] uppercase tracking-widest text-neutral-500">${esc(p.brand)}</p><h3 class="mt-2 font-bold uppercase">${esc(p.name)}</h3><span class="mt-5 inline-block text-xs uppercase tracking-wider text-neutral-400">Ver detalles →</span></div></button><button class="absolute right-4 top-4 rounded-full bg-black/80 px-3 py-1" onclick="event.stopPropagation();toggleWish(${p.id})" aria-label="Guardar favorito">${wishlist.includes(p.id)?'♥':'♡'}</button></article>`).join('')}
+function filterCategory(c){category=c;document.querySelectorAll('.filter').forEach(b=>{let on=b.dataset.cat===c;b.className=`filter rounded-full border px-4 py-2 text-xs font-bold uppercase ${on?'bg-white text-black':'border-neutral-700 text-neutral-300'}`});renderProducts()}
+function filterBrand(b){brand=b;renderBrands();renderProducts()}
+function openProduct(id){let p=PRODUCTS.find(x=>x.id===id);if(!p)return;document.getElementById('modal-image').src=p.image;document.getElementById('modal-image').alt=p.name;document.getElementById('modal-brand').textContent=p.brand+' • '+p.badge;document.getElementById('modal-title').textContent=p.name;document.getElementById('modal-desc').textContent=p.description;document.getElementById('modal-materials').textContent=p.materials;document.getElementById('modal-sizes').textContent=p.sizes;document.getElementById('product-modal').classList.replace('hidden','flex');document.body.style.overflow='hidden'}
+function closeProduct(){document.getElementById('product-modal').classList.replace('flex','hidden');document.body.style.overflow=''}
+function toggleWish(id){wishlist=wishlist.includes(id)?wishlist.filter(x=>x!==id):[...wishlist,id];localStorage.setItem('blackdrop-wishlist',JSON.stringify(wishlist));document.getElementById('wishlist-count').textContent=wishlist.length;renderProducts();if(!document.getElementById('wishlist-modal').classList.contains('hidden'))renderWishlist()}
+function renderWishlist(){document.getElementById('wishlist-items').innerHTML=wishlist.map(id=>PRODUCTS.find(p=>p.id===id)).filter(Boolean).map(p=>`<div class="flex items-center justify-between gap-3 border-b border-neutral-800 py-3"><span class="text-xs">${esc(p.name)}</span><button onclick="toggleWish(${p.id})">Quitar</button></div>`).join('')||'<p class="py-5 text-center text-sm text-neutral-400">No hay piezas guardadas.</p>'}
+function toggleWishlistModal(){let m=document.getElementById('wishlist-modal');let open=m.classList.contains('hidden');m.classList.toggle('hidden',!open);m.classList.toggle('flex',open);if(open)renderWishlist()}
+function toggleTheme(){document.documentElement.classList.toggle('light');let light=document.documentElement.classList.contains('light');document.documentElement.style.setProperty('--bg',light?'#f5f5f5':'#000');document.documentElement.style.setProperty('--text',light?'#111':'#fff');document.body.style.background=light?'#f5f5f5':'radial-gradient(ellipse at 50% -20%,#242424 0,transparent 42%),#000';document.body.style.color=light?'#111':'#fff'}
+const slides=[['BLACKDROP SHOWCASE 2026','Exhibición de alta gama','https://images.unsplash.com/photo-1588850561407-ed78c282e89b?q=80&w=1600&auto=format&fit=crop'],['Piezas de colección','Barbas Hats & 31 Hats','https://images.unsplash.com/photo-1575428652377-a2d80e2277fc?q=80&w=1600&auto=format&fit=crop'],['Lookbook apparel','Hoodies & cortes oversized','https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=1600&auto=format&fit=crop']];function changeSlide(i){slide=i;document.getElementById('hero-tag').textContent=slides[i][0];document.getElementById('hero-title').textContent=slides[i][1];document.getElementById('hero-bg').style.backgroundImage=`url('${slides[i][2]}')`;document.querySelectorAll('.hero-dot').forEach((d,n)=>d.className=`hero-dot h-1.5 rounded-full ${n===i?'w-8 bg-white':'w-2 bg-neutral-500'}`)}
+document.getElementById('product-modal').addEventListener('click',e=>{if(e.target.id==='product-modal')closeProduct()});document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeProduct();document.getElementById('wishlist-modal').classList.add('hidden')}});renderBrands();renderProducts();document.getElementById('wishlist-count').textContent=wishlist.length;setInterval(()=>changeSlide((slide+1)%slides.length),6000);
+</script>
 </body>
 </html>
