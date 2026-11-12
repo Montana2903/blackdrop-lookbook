@@ -150,7 +150,7 @@
   <header class="sticky top-0 z-40 glass-nav">
     <div class="max-w-7xl mx-auto px-5 h-24 flex items-center justify-between gap-4">
       <a href="#" class="flex items-center py-2">
-        <img src="./IMG_0209.jpg" alt="Black Drop Logo" class="brand-logo h-14 md:h-16 w-auto max-w-[200px] md:max-w-[240px] object-contain">
+        <img src="IMG_0209.png" alt="Black Drop Logo" class="brand-logo h-14 md:h-16 w-auto max-w-[200px] md:max-w-[240px] object-contain">
       </a>
       <nav class="hidden md:flex gap-7 text-xs font-semibold uppercase tracking-wider" style="color:var(--text-main);">
         <a href="#catalogo" class="hover:opacity-70 transition-opacity">Colección</a>
@@ -206,7 +206,7 @@
     </section>
   </main>
 
-  <!-- Modal de Producto corregido con altura máxima y scroll completo -->
+  <!-- Modal de Producto -->
   <div id="product-modal" class="fixed inset-0 z-50 hidden items-center justify-center overflow-y-auto bg-black/80 p-4 sm:p-6" role="dialog" aria-modal="true">
     <article style="background:var(--modal-bg); border:1px solid var(--modal-border); color:var(--text-main);" class="relative grid w-full max-w-4xl gap-6 rounded-3xl p-6 md:grid-cols-2 md:p-8 shadow-2xl max-h-[90vh] overflow-y-auto my-auto">
       <button onclick="closeProduct()" class="btn-surface absolute right-4 top-4 rounded-full px-3 py-1 text-xs font-bold z-10" aria-label="Cerrar">✕</button>
@@ -226,6 +226,7 @@
     </article>
   </div>
 
+  <!-- Modal de Favoritos -->
   <div id="wishlist-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 p-4">
     <div style="background:var(--modal-bg); border:1px solid var(--modal-border); color:var(--text-main);" class="w-full max-w-lg rounded-3xl p-6 shadow-2xl max-h-[85vh] overflow-y-auto">
       <div class="mb-5 flex justify-between items-center">
